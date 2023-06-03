@@ -1,4 +1,4 @@
-# mypresence
+# My Presence App | Flutter
 
 A new Flutter project.
 
