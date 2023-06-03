@@ -1,7 +1,7 @@
 // ignore_for_file: unnecessary_overrides
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mypresence/app/routes/app_pages.dart';
 
@@ -27,13 +27,41 @@ class LoginController extends GetxController {
 
         if (userCredential.user != null) {
           if (userCredential.user!.emailVerified == true) {
-            Get.snackbar("Sukses", "anda berhasil login");
-            Get.offAllNamed(Routes.HOME);
+            if (passwordController.text == "password") {
+              Get.offAllNamed(Routes.NEW_PASSWORD);
+            } else {
+              Get.snackbar("Sukses", "anda berhasil login");
+              Get.offAllNamed(Routes.HOME);
+            }
           } else {
             Get.defaultDialog(
               title: "Belum Terverifikasi",
               middleText:
                   "Kamu belum verifikasi akun ini, verifikasi akun melalu pesan email yang sudah kami kirim!",
+              actions: [
+                OutlinedButton(
+                  onPressed: () => Get.back(), // for closed dialogue
+                  child: const Text("CANCEL"),
+                ),
+                ElevatedButton(
+                  onPressed: () async {
+                    try {
+                      await userCredential.user!.sendEmailVerification();
+                      Get.back();
+                      Get.snackbar(
+                        "Sukses",
+                        "Link verifikasi akun sudah kami kirim, silahkan cek email dan lakukan verifikasi akun.",
+                      );
+                    } catch (e) {
+                      Get.snackbar(
+                        "Terjadi Kegagalan",
+                        "Tidak dapat mengirim email verifikasi, Silahkan hubungi admin atau CS kami.",
+                      );
+                    }
+                  }, // send verification
+                  child: const Text("KIRIM ULANG"),
+                ),
+              ],
             );
           }
         }
