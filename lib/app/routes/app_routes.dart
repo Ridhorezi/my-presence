@@ -9,6 +9,8 @@ abstract class Routes {
   static const ADD_PEGAWAI = _Paths.ADD_PEGAWAI;
   // ignore: constant_identifier_names
   static const LOGIN = _Paths.LOGIN;
+  // ignore: constant_identifier_names
+  static const NEW_PASSWORD = _Paths.NEW_PASSWORD;
 }
 
 abstract class _Paths {
@@ -19,4 +21,6 @@ abstract class _Paths {
   static const ADD_PEGAWAI = '/add-pegawai';
   // ignore: constant_identifier_names
   static const LOGIN = '/login';
+  // ignore: constant_identifier_names
+  static const NEW_PASSWORD = '/new-password';
 }
