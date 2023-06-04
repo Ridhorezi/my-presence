@@ -22,9 +22,6 @@ class LoginController extends GetxController {
           password: passwordController.text,
         );
 
-        // ignore: avoid_print
-        print(userCredential);
-
         if (userCredential.user != null) {
           if (userCredential.user!.emailVerified == true) {
             if (passwordController.text == "password") {
@@ -50,7 +47,7 @@ class LoginController extends GetxController {
                       Get.back();
                       Get.snackbar(
                         "Sukses",
-                        "Link verifikasi akun sudah kami kirim, silahkan cek email dan lakukan verifikasi akun.",
+                        "Link verifikasi akun sudah dikirim, silahkan cek email dan lakukan verifikasi akun.",
                       );
                     } catch (e) {
                       Get.snackbar(
