@@ -6,14 +6,16 @@ import 'package:get/get.dart';
 import 'package:mypresence/app/routes/app_pages.dart';
 
 class LoginController extends GetxController {
+  RxBool isLoading = false.obs;
+
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
 
   FirebaseAuth auth = FirebaseAuth.instance;
 
-  void login() async {
+  Future<void> login() async {
     if (emailController.text.isNotEmpty && passwordController.text.isNotEmpty) {
-      //execute
+      isLoading.value = true;
       try {
         // ignore: unused_local_variable
         UserCredential userCredential =
@@ -24,6 +26,7 @@ class LoginController extends GetxController {
 
         if (userCredential.user != null) {
           if (userCredential.user!.emailVerified == true) {
+            isLoading.value = false;
             if (passwordController.text == "password") {
               Get.offAllNamed(Routes.NEW_PASSWORD);
             } else {
@@ -37,8 +40,11 @@ class LoginController extends GetxController {
                   "Kamu belum verifikasi akun ini, verifikasi akun melalu pesan email yang sudah kami kirim!",
               actions: [
                 OutlinedButton(
-                  onPressed: () => Get.back(), // for closed dialogue
-                  child: const Text("CANCEL"),
+                  onPressed: () {
+                    isLoading.value = false;
+                    Get.back();
+                  }, // for closed dialogue
+                  child: const Text("Cancel"),
                 ),
                 ElevatedButton(
                   onPressed: () async {
@@ -49,26 +55,31 @@ class LoginController extends GetxController {
                         "Sukses",
                         "Link verifikasi akun sudah dikirim, silahkan cek email dan lakukan verifikasi akun.",
                       );
+                      isLoading.value = false;
                     } catch (e) {
+                      isLoading.value = false;
                       Get.snackbar(
                         "Terjadi Kegagalan",
                         "Tidak dapat mengirim email verifikasi, Silahkan hubungi admin atau CS kami.",
                       );
                     }
                   }, // send verification
-                  child: const Text("KIRIM ULANG"),
+                  child: const Text("Kirim Ulang"),
                 ),
               ],
             );
           }
         }
+        isLoading.value = false;
       } on FirebaseAuthException catch (e) {
+        isLoading.value = false;
         if (e.code == 'user-not-found') {
           Get.snackbar("Terjadi Kesalahan", "Email tidak terdaftar!");
         } else if (e.code == 'wrong-password') {
           Get.snackbar("Terjadi Kesalahan", "Password tidak terdaftar!");
         }
       } catch (e) {
+        isLoading.value = false;
         Get.snackbar("Terjadi Kesalahan", "Tidak dapat login");
       }
     } else {
