@@ -53,7 +53,7 @@ class LoginController extends GetxController {
                       Get.back();
                       Get.snackbar(
                         "Sukses",
-                        "Link verifikasi akun sudah dikirim, silahkan cek email dan lakukan verifikasi akun.",
+                        "Link verifikasi akun sudah dikirim, silahkan cek email ${emailController.text} dan lakukan verifikasi akun.",
                       );
                       isLoading.value = false;
                     } catch (e) {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
+import 'package:mypresence/app/routes/app_pages.dart';
 
 import '../controllers/login_controller.dart';
 
@@ -50,7 +51,7 @@ class LoginView extends GetView<LoginController> {
             ),
           ),
           TextButton(
-            onPressed: () {},
+            onPressed: () => Get.toNamed(Routes.FORGOT_PASSWORD),
             child: const Text("Lupa Password ?"),
           ),
         ],
