@@ -19,7 +19,7 @@ class ProfileView extends GetView<ProfileController> {
         stream: controller.streamUser(),
         builder: (context, snap) {
           if (snap.connectionState == ConnectionState.waiting) {
-            const Center(
+            return const Center(
               child: CircularProgressIndicator(),
             );
           }
