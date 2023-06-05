@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
@@ -58,12 +60,41 @@ class UpdateProfileView extends GetView<UpdateProfileController> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // ignore: unrelated_type_equality_checks
-              user["profile"] != null && ["profile"] != ""
-                  ? const Text("Foto Profile")
-                  : const Text("No Choosen!"),
+              GetBuilder<UpdateProfileController>(
+                builder: (controller) {
+                  if (controller.image != null) {
+                    return ClipOval(
+                      child: SizedBox(
+                        height: 100,
+                        width: 100,
+                        child: Image.file(
+                          File(controller.image!.path),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                    );
+                  } else {
+                    if (user["profile"] != null) {
+                      return ClipOval(
+                        child: SizedBox(
+                          height: 100,
+                          width: 100,
+                          child: Image.network(
+                            user["profile"],
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                      );
+                    } else {
+                      return const Text("No Image !");
+                    }
+                  }
+                },
+              ),
               TextButton(
-                onPressed: () {},
+                onPressed: () {
+                  controller.pickImage();
+                },
                 child: const Text("Choose"),
               )
             ],
