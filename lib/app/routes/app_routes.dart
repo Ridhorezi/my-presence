@@ -15,6 +15,10 @@ abstract class Routes {
   static const FORGOT_PASSWORD = _Paths.FORGOT_PASSWORD;
   // ignore: constant_identifier_names
   static const PROFILE = _Paths.PROFILE;
+  // ignore: constant_identifier_names
+  static const UPDATE_PROFILE = _Paths.UPDATE_PROFILE;
+  // ignore: constant_identifier_names
+  static const UPDATE_PASSWORD = _Paths.UPDATE_PASSWORD;
 }
 
 abstract class _Paths {
@@ -31,4 +35,8 @@ abstract class _Paths {
   static const FORGOT_PASSWORD = '/forgot-password';
   // ignore: constant_identifier_names
   static const PROFILE = '/profile';
+  // ignore: constant_identifier_names
+  static const UPDATE_PROFILE = '/update-profile';
+  // ignore: constant_identifier_names
+  static const UPDATE_PASSWORD = '/update-password';
 }
