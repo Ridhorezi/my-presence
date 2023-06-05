@@ -10,14 +10,61 @@ class UpdatePasswordView extends GetView<UpdatePasswordController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('UpdatePasswordView'),
+        title: const Text('UPDATE PASSWORD'),
         centerTitle: true,
       ),
-      body: const Center(
-        child: Text(
-          'UpdatePasswordView is working',
-          style: TextStyle(fontSize: 20),
-        ),
+      body: ListView(
+        padding: const EdgeInsets.all(10),
+        children: [
+          TextField(
+            controller: controller.currentController,
+            autocorrect: false,
+            obscureText: true,
+            decoration: const InputDecoration(
+              labelText: "Current Password",
+              border: OutlineInputBorder(),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          TextField(
+            controller: controller.newController,
+            autocorrect: false,
+            obscureText: true,
+            decoration: const InputDecoration(
+              labelText: "New Password",
+              border: OutlineInputBorder(),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          TextField(
+            controller: controller.confirmController,
+            autocorrect: false,
+            obscureText: true,
+            decoration: const InputDecoration(
+              labelText: "Confirm Password",
+              border: OutlineInputBorder(),
+            ),
+          ),
+          const SizedBox(
+            height: 10,
+          ),
+          Obx(
+            () => ElevatedButton(
+              onPressed: () {
+                if (controller.isLoading.isFalse) {
+                  controller.updatePassword();
+                }
+              },
+              child: Text(
+                controller.isLoading.isFalse ? "Change Password" : "Loading...",
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
