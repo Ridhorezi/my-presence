@@ -43,11 +43,30 @@ class UpdateProfileView extends GetView<UpdateProfileController> {
           TextField(
             readOnly: false,
             autocorrect: false,
-            controller: controller.emailController,
+            controller: controller.nameController,
             decoration: const InputDecoration(
-              labelText: "Email",
+              labelText: "Name",
               border: OutlineInputBorder(),
             ),
+          ),
+          const SizedBox(height: 25),
+          const Text(
+            "Photo Profile",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
+          const SizedBox(height: 10),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              // ignore: unrelated_type_equality_checks
+              user["profile"] != null && ["profile"] != ""
+                  ? const Text("Foto Profile")
+                  : const Text("No Choosen!"),
+              TextButton(
+                onPressed: () {},
+                child: const Text("Choose"),
+              )
+            ],
           ),
           const SizedBox(height: 30),
           Obx(
