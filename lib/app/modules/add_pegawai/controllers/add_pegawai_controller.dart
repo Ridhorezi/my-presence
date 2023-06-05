@@ -44,6 +44,7 @@ class AddPegawaiController extends GetxController {
             "name": nameController.text,
             "email": emailController.text,
             "uid": uid,
+            "role": "pegawai",
             "createdAt": DateTime.now().toIso8601String(),
           });
           await pegawaiCredential.user!.sendEmailVerification();
