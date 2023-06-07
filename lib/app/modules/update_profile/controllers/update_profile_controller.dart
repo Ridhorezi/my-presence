@@ -11,6 +11,7 @@ class UpdateProfileController extends GetxController {
 
   TextEditingController nipController = TextEditingController();
   TextEditingController nameController = TextEditingController();
+  TextEditingController jobController = TextEditingController();
   TextEditingController emailController = TextEditingController();
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
@@ -28,11 +29,15 @@ class UpdateProfileController extends GetxController {
   Future<void> updateProfile(String uid) async {
     if (nipController.text.isNotEmpty &&
         nameController.text.isNotEmpty &&
+        jobController.text.isNotEmpty &&
         emailController.text.isNotEmpty) {
       isLoading.value = true;
       try {
         Map<String, dynamic> data = {
+          "nip": nipController.text,
           "name": nameController.text,
+          "job": jobController.text,
+          "email": emailController.text,
         };
         if (image != null) {
           File file = File(image!.path);
