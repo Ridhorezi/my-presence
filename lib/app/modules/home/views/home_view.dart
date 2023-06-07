@@ -1,14 +1,14 @@
-// import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:get/get.dart';
 import 'package:mypresence/app/routes/app_pages.dart';
 
 import '../controllers/home_controller.dart';
+import '../../../controllers/page_index_controller.dart';
 
 class HomeView extends GetView<HomeController> {
-  const HomeView({Key? key}) : super(key: key);
+  final pageController = Get.find<PageIndexController>();
+  HomeView({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,21 +28,16 @@ class HomeView extends GetView<HomeController> {
           style: TextStyle(fontSize: 20),
         ),
       ),
-      floatingActionButton: Obx(
-        () => FloatingActionButton(
-          onPressed: () async {
-            if (controller.isLoading.isFalse) {
-              controller.isLoading.value = true;
-              await FirebaseAuth.instance.signOut();
-              controller.isLoading.value = false;
-              Get.offAllNamed(Routes.LOGIN);
-              Get.snackbar("Sukses", "Logout");
-            }
-          },
-          child: controller.isLoading.isFalse
-              ? const Icon(Icons.logout)
-              : const CircularProgressIndicator(),
-        ),
+      bottomNavigationBar: ConvexAppBar(
+        style: TabStyle.fixedCircle,
+        items: const [
+          TabItem(icon: Icons.home, title: 'Home'),
+          TabItem(icon: Icons.fingerprint, title: 'Absensi'),
+          TabItem(icon: Icons.people, title: 'Profile'),
+        ],
+        initialActiveIndex: pageController.pageIndex.value,
+        // ignore: avoid_print
+        onTap: (int i) => pageController.changePage(i),
       ),
     );
   }
