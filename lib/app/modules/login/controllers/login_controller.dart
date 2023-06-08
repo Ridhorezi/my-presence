@@ -51,6 +51,9 @@ class LoginController extends GetxController {
                   child: const Text("Cancel"),
                 ),
                 ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: const Color.fromRGBO(6, 74, 203, 1),
+                  ),
                   onPressed: () async {
                     try {
                       await userCredential.user!.sendEmailVerification();

@@ -15,8 +15,18 @@ class ProfileView extends GetView<ProfileController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('PROFILE'),
+        title: const Text("Profile Page"),
+        titleSpacing: 00.0,
         centerTitle: true,
+        toolbarHeight: 55,
+        toolbarOpacity: 0.8,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              bottomRight: Radius.circular(14),
+              bottomLeft: Radius.circular(14)),
+        ),
+        elevation: 0.00,
+        backgroundColor: const Color.fromRGBO(17, 70, 143, 1),
       ),
       body: StreamBuilder<DocumentSnapshot<Map<String, dynamic>>>(
         stream: controller.streamUser(),
@@ -110,10 +120,11 @@ class ProfileView extends GetView<ProfileController> {
         },
       ),
       bottomNavigationBar: ConvexAppBar(
+        backgroundColor: const Color.fromRGBO(4, 21, 98, 1),
         style: TabStyle.fixedCircle,
         items: const [
           TabItem(icon: Icons.home, title: 'Home'),
-          TabItem(icon: Icons.fingerprint, title: 'Absensi'),
+          TabItem(icon: Icons.touch_app_rounded, title: 'Absensi'),
           TabItem(icon: Icons.people, title: 'Profile'),
         ],
         initialActiveIndex: pageController.pageIndex.value,
