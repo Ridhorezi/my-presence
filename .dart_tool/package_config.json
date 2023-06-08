@@ -206,6 +206,30 @@
       "languageVersion": "3.0"
     },
     {
+      "name": "geocoding",
+      "rootUri": "file:///C:/Users/ASUS/AppData/Local/Pub/Cache/hosted/pub.dev/geocoding-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "geocoding_android",
+      "rootUri": "file:///C:/Users/ASUS/AppData/Local/Pub/Cache/hosted/pub.dev/geocoding_android-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "geocoding_ios",
+      "rootUri": "file:///C:/Users/ASUS/AppData/Local/Pub/Cache/hosted/pub.dev/geocoding_ios-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "geocoding_platform_interface",
+      "rootUri": "file:///C:/Users/ASUS/AppData/Local/Pub/Cache/hosted/pub.dev/geocoding_platform_interface-2.0.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "geolocator",
       "rootUri": "file:///C:/Users/ASUS/AppData/Local/Pub/Cache/hosted/pub.dev/geolocator-9.0.2",
       "packageUri": "lib/",
@@ -434,7 +458,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-06-08T08:53:02.260330Z",
+  "generated": "2023-06-08T15:57:30.485498Z",
   "generator": "pub",
   "generatorVersion": "3.0.2"
 }

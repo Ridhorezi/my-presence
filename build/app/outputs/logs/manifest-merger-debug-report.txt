@@ -62,6 +62,7 @@ MERGED from [:firebase_core] D:\flutter-project\tugas\mypresence\build\firebase_
 MERGED from [:image_picker_android] D:\flutter-project\tugas\mypresence\build\image_picker_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-21:12
 MERGED from [:flutter_plugin_android_lifecycle] D:\flutter-project\tugas\mypresence\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:geolocator_android] D:\flutter-project\tugas\mypresence\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-19:12
+MERGED from [:geocoding_android] D:\flutter-project\tugas\mypresence\build\geocoding_android\intermediates\merged_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\ASUS\.gradle\caches\transforms-3\38f6a662321be909ca54ed9fccb79928\transformed\multidex-2.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [com.google.firebase:firebase-auth:22.0.0] C:\Users\ASUS\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:17:1-75:12
 MERGED from [com.google.android.gms:play-services-location:21.0.1] C:\Users\ASUS\.gradle\caches\transforms-3\66c25f7227d4a9bf84bb0cdd4caeff37\transformed\jetified-play-services-location-21.0.1\AndroidManifest.xml:2:1-9:12
@@ -148,6 +149,8 @@ MERGED from [:flutter_plugin_android_lifecycle] D:\flutter-project\tugas\myprese
 MERGED from [:flutter_plugin_android_lifecycle] D:\flutter-project\tugas\mypresence\build\flutter_plugin_android_lifecycle\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:geolocator_android] D:\flutter-project\tugas\mypresence\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [:geolocator_android] D:\flutter-project\tugas\mypresence\build\geolocator_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:geocoding_android] D:\flutter-project\tugas\mypresence\build\geocoding_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
+MERGED from [:geocoding_android] D:\flutter-project\tugas\mypresence\build\geocoding_android\intermediates\merged_manifest\debug\AndroidManifest.xml:5:5-7:41
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\ASUS\.gradle\caches\transforms-3\38f6a662321be909ca54ed9fccb79928\transformed\multidex-2.0.0\AndroidManifest.xml:20:5-43
 MERGED from [androidx.multidex:multidex:2.0.0] C:\Users\ASUS\.gradle\caches\transforms-3\38f6a662321be909ca54ed9fccb79928\transformed\multidex-2.0.0\AndroidManifest.xml:20:5-43
 MERGED from [com.google.firebase:firebase-auth:22.0.0] C:\Users\ASUS\.gradle\caches\transforms-3\addd1e7d7380e6c086f46a0c78155c8a\transformed\jetified-firebase-auth-22.0.0\AndroidManifest.xml:21:5-23:64
