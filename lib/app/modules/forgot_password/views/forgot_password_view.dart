@@ -52,13 +52,17 @@ class ForgotPasswordView extends GetView<ForgotPasswordController> {
                             ),
                           ),
                           const SizedBox(
-                            height: 40,
+                            height: 20,
                           ),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               Obx(
                                 () => ElevatedButton(
+                                  style: ElevatedButton.styleFrom(
+                                    backgroundColor:
+                                        const Color.fromRGBO(6, 74, 203, 1),
+                                  ),
                                   onPressed: () {
                                     if (controller.isLoading.isFalse) {
                                       controller.sendEmail();

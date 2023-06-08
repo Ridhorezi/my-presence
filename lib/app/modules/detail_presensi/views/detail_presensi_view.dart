@@ -11,8 +11,18 @@ class DetailPresensiView extends GetView<DetailPresensiController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('DETAIL PRESENSI'),
+        title: const Text("Detail Presensi Page"),
+        titleSpacing: 00.0,
         centerTitle: true,
+        toolbarHeight: 55,
+        toolbarOpacity: 0.8,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              bottomRight: Radius.circular(14),
+              bottomLeft: Radius.circular(14)),
+        ),
+        elevation: 0.00,
+        backgroundColor: const Color.fromRGBO(17, 70, 143, 1),
       ),
       body: ListView(
         padding: const EdgeInsets.all(20),

@@ -55,9 +55,13 @@ class NewPasswordView extends GetView<NewPasswordController> {
                             height: 40,
                           ),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.end,
                             children: [
                               ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                  backgroundColor:
+                                      const Color.fromRGBO(6, 74, 203, 1),
+                                ),
                                 onPressed: () {
                                   controller.newPassword();
                                 },

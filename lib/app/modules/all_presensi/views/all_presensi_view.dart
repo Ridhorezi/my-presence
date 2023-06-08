@@ -12,8 +12,18 @@ class AllPresensiView extends GetView<AllPresensiController> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('ALL PRESENSI'),
+        title: const Text("All Presensi Page"),
+        titleSpacing: 00.0,
         centerTitle: true,
+        toolbarHeight: 55,
+        toolbarOpacity: 0.8,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+              bottomRight: Radius.circular(14),
+              bottomLeft: Radius.circular(14)),
+        ),
+        elevation: 0.00,
+        backgroundColor: const Color.fromRGBO(17, 70, 143, 1),
       ),
       body: Column(
         children: [
