@@ -11,7 +11,7 @@ class HomeController extends GetxController {
 
   FirebaseFirestore firestore = FirebaseFirestore.instance;
 
-  Stream<DocumentSnapshot<Map<String, dynamic>>> streamRole() async* {
+  Stream<DocumentSnapshot<Map<String, dynamic>>> streamUser() async* {
     String uid = auth.currentUser!.uid;
 
     yield* firestore.collection("pegawai").doc(uid).snapshots();

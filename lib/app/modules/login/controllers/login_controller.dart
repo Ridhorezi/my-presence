@@ -30,7 +30,11 @@ class LoginController extends GetxController {
             if (passwordController.text == "password") {
               Get.offAllNamed(Routes.NEW_PASSWORD);
             } else {
-              Get.snackbar("Sukses", "anda berhasil login");
+              Get.snackbar(
+                "Sukses",
+                "anda berhasil login",
+                colorText: Colors.white,
+              );
               Get.offAllNamed(Routes.HOME);
             }
           } else {
@@ -54,6 +58,7 @@ class LoginController extends GetxController {
                       Get.snackbar(
                         "Sukses",
                         "Link verifikasi akun sudah dikirim, silahkan cek email ${emailController.text} dan lakukan verifikasi akun.",
+                        colorText: Colors.white,
                       );
                       isLoading.value = false;
                     } catch (e) {
@@ -61,6 +66,7 @@ class LoginController extends GetxController {
                       Get.snackbar(
                         "Terjadi Kegagalan",
                         "Tidak dapat mengirim email verifikasi, Silahkan hubungi admin atau CS kami.",
+                        colorText: Colors.white,
                       );
                     }
                   }, // send verification
@@ -74,16 +80,32 @@ class LoginController extends GetxController {
       } on FirebaseAuthException catch (e) {
         isLoading.value = false;
         if (e.code == 'user-not-found') {
-          Get.snackbar("Terjadi Kesalahan", "Email tidak terdaftar!");
+          Get.snackbar(
+            "Terjadi Kesalahan",
+            "Email tidak terdaftar!",
+            colorText: Colors.white,
+          );
         } else if (e.code == 'wrong-password') {
-          Get.snackbar("Terjadi Kesalahan", "Password tidak terdaftar!");
+          Get.snackbar(
+            "Terjadi Kesalahan",
+            "Password tidak terdaftar!",
+            colorText: Colors.white,
+          );
         }
       } catch (e) {
         isLoading.value = false;
-        Get.snackbar("Terjadi Kesalahan", "Tidak dapat login");
+        Get.snackbar(
+          "Terjadi Kesalahan",
+          "Tidak dapat login",
+          colorText: Colors.white,
+        );
       }
     } else {
-      Get.snackbar("Terjadi Kesalahan", "Email dan Password wajib di isi!");
+      Get.snackbar(
+        "Terjadi Kesalahan",
+        "Email dan Password wajib di isi!",
+        colorText: Colors.white,
+      );
     }
   }
 }

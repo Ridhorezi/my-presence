@@ -14,16 +14,26 @@ class ForgotPasswordController extends GetxController {
       isLoading.value = true;
       try {
         await auth.sendPasswordResetEmail(email: emailController.text);
-        Get.snackbar("Sukses",
-            "Kami telah mengirimkan link resset password, Silahkan periksa email ${emailController.text} dan lakukan resset password!");
+        Get.snackbar(
+          "Sukses",
+          "Kami telah mengirimkan link resset password, Silahkan periksa email ${emailController.text} dan lakukan resset password!",
+          colorText: Colors.white,
+        );
       } catch (e) {
         Get.snackbar(
-            "Terjadi Kesalahan", "Tidak dapat mengirim email resset password!");
+          "Terjadi Kesalahan",
+          "Tidak dapat mengirim email resset password!",
+          colorText: Colors.white,
+        );
       } finally {
         isLoading.value = false;
       }
     } else {
-      Get.snackbar("Terjadi Kesalahan", "Email wajib di isi!");
+      Get.snackbar(
+        "Terjadi Kesalahan",
+        "Email wajib di isi!",
+        colorText: Colors.white,
+      );
     }
   }
 }
