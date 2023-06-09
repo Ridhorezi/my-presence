@@ -66,7 +66,8 @@ class PageIndexController extends GetxController {
     });
   }
 
-  Future<void> presensi(Position position, String address) async {
+  Future<void> presensi(
+      Position position, String address, double distance) async {
     // ignore: await_only_futures
     String uid = await auth.currentUser!.uid;
 
@@ -81,6 +82,13 @@ class PageIndexController extends GetxController {
 
     String todayDocID = DateFormat.yMd().format(now).replaceAll("/", "-");
 
+    String status = "Di luar area";
+
+    if (distance <= 1000) {
+      // in area
+      status = "Di dalam area";
+    }
+
     // ignore: prefer_is_empty
     if (snapPresensi.docs.length == 0) {
       // never been presence
@@ -91,7 +99,7 @@ class PageIndexController extends GetxController {
           "lat": position.latitude,
           "long": position.longitude,
           "address": address,
-          "status": "Di dalam area"
+          "status": status,
         }
       });
     } else {
@@ -115,7 +123,7 @@ class PageIndexController extends GetxController {
                 "lat": position.latitude,
                 "long": position.longitude,
                 "address": address,
-                "status": "Di dalam area"
+                "status": status,
               }
             },
           );
@@ -131,7 +139,7 @@ class PageIndexController extends GetxController {
               "lat": position.latitude,
               "long": position.longitude,
               "address": address,
-              "status": "Di dalam area"
+              "status": status,
             }
           },
         );
@@ -156,7 +164,11 @@ class PageIndexController extends GetxController {
 
           await updatePosition(position, address);
 
-          await presensi(position, address);
+          // check distance between 2 position
+          double distance = Geolocator.distanceBetween(
+              -6.23881, 107.0071244, position.latitude, position.longitude);
+
+          await presensi(position, address, distance);
 
           Get.snackbar(
             "Sukses",
