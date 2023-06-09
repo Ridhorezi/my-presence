@@ -83,8 +83,7 @@ class PageIndexController extends GetxController {
 
     // ignore: prefer_is_empty
     if (snapPresensi.docs.length == 0) {
-      // belum pernah absensi
-
+      // never been presence
       await collectionPresence.doc(todayDocID).set({
         "date": now.toIso8601String(),
         "masuk": {
@@ -96,7 +95,47 @@ class PageIndexController extends GetxController {
         }
       });
     } else {
-      // sudah pernah absensi
+      // presence already
+      DocumentSnapshot<Map<String, dynamic>> todayDoc =
+          await collectionPresence.doc(todayDocID).get();
+
+      if (todayDoc.exists == true) {
+        // presence out
+        Map<String, dynamic>? dataPresenceToday = todayDoc.data();
+
+        if (dataPresenceToday?["keluar"] != null) {
+          // presence out / in already
+          Get.snackbar("Sukses", "Kamu telah absen masuk & keluar");
+        } else {
+          // presence out finished
+          await collectionPresence.doc(todayDocID).update(
+            {
+              "keluar": {
+                "date": now.toIso8601String(),
+                "lat": position.latitude,
+                "long": position.longitude,
+                "address": address,
+                "status": "Di dalam area"
+              }
+            },
+          );
+          Get.snackbar("Sukses", "Kamu telah absen keluar");
+        }
+      } else {
+        // presence in
+        await collectionPresence.doc(todayDocID).set(
+          {
+            "date": now.toIso8601String(),
+            "masuk": {
+              "date": now.toIso8601String(),
+              "lat": position.latitude,
+              "long": position.longitude,
+              "address": address,
+              "status": "Di dalam area"
+            }
+          },
+        );
+      }
     }
   }
 
