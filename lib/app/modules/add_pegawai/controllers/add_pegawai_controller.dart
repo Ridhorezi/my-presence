@@ -43,7 +43,7 @@ class AddPegawaiController extends GetxController {
           await firestore.collection("pegawai").doc(uid).set({
             "nip": nipController.text,
             "name": nameController.text,
-            "job": nameController.text,
+            "job": jobController.text,
             "email": emailController.text,
             "uid": uid,
             "role": "pegawai",
