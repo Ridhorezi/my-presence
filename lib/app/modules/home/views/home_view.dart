@@ -111,7 +111,7 @@ class HomeView extends GetView<HomeController> {
                         ),
                       ),
                       const SizedBox(
-                        height: 20,
+                        height: 10,
                       ),
                       Text(
                         "${user['nip']}",
