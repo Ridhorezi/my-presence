@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:mypresence/app/routes/app_pages.dart';
+import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 import '../controllers/all_presensi_controller.dart';
 
@@ -27,121 +28,126 @@ class AllPresensiView extends GetView<AllPresensiController> {
         elevation: 0.00,
         backgroundColor: const Color.fromRGBO(17, 70, 143, 1),
       ),
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(15),
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-              elevation: 8,
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(20),
-                  ),
-                  labelText: "Search...",
+      body: GetBuilder<AllPresensiController>(
+        builder: (c) => FutureBuilder<QuerySnapshot<Map<String, dynamic>>>(
+          future: controller.getPresence(),
+          builder: (context, snap) {
+            if (snap.connectionState == ConnectionState.waiting) {
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            }
+            // ignore: prefer_is_empty
+            if (snap.data?.docs.length == 0 || snap.data == null) {
+              return const SizedBox(
+                height: 150,
+                child: Center(
+                  child: Text("Belum ada history presensi."),
                 ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: StreamBuilder<QuerySnapshot<Map<String, dynamic>>>(
-              stream: controller.streamAllPresence(),
-              builder: (context, snap) {
-                if (snap.connectionState == ConnectionState.waiting) {
-                  return const Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-                // ignore: prefer_is_empty
-                if (snap.data?.docs.length == 0 || snap.data == null) {
-                  return const SizedBox(
-                    height: 150,
-                    child: Center(
-                      child: Text("Belum ada history presensi."),
-                    ),
-                  );
-                }
-                return ListView.builder(
-                  padding:
-                      const EdgeInsets.only(left: 20, right: 20, bottom: 20),
-                  itemCount: snap.data!.docs.length,
-                  itemBuilder: (context, index) {
-                    Map<String, dynamic> data = snap.data!.docs[index].data();
+              );
+            }
+            return ListView.builder(
+              padding: const EdgeInsets.all(20),
+              itemCount: snap.data!.docs.length,
+              itemBuilder: (context, index) {
+                Map<String, dynamic> data = snap.data!.docs[index].data();
 
-                    return Padding(
-                      padding: const EdgeInsets.only(bottom: 20),
-                      child: Material(
-                        borderRadius: BorderRadius.circular(20),
-                        color: Colors.grey.shade200,
-                        child: InkWell(
-                          onTap: () => Get.toNamed(
-                            Routes.DETAIL_PRESENSI,
-                            arguments: data,
-                          ),
+                return Padding(
+                  padding: const EdgeInsets.only(bottom: 20),
+                  child: Material(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.grey.shade200,
+                    child: InkWell(
+                      onTap: () => Get.toNamed(
+                        Routes.DETAIL_PRESENSI,
+                        arguments: data,
+                      ),
+                      borderRadius: BorderRadius.circular(20),
+                      child: Container(
+                        padding: const EdgeInsets.all(20),
+                        decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(20),
-                          child: Container(
-                            padding: const EdgeInsets.all(20),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    const Text(
-                                      "Masuk",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                    Text(
-                                      // ignore: unnecessary_string_interpolations
-                                      "${DateFormat.yMMMEd().format(DateTime.parse(data['date']))}",
-                                      style: const TextStyle(
-                                        fontWeight: FontWeight.bold,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Text(
-                                  (data['masuk']?['date'] == null
-                                      ? "-"
-                                      // ignore: unnecessary_string_interpolations
-                                      : "${DateFormat.jms().format(DateTime.parse(data['masuk']!['date']))}"),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
                                 const Text(
-                                  "Keluar",
+                                  "Masuk",
                                   style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),
                                 Text(
-                                  (data['keluar']?['date'] == null
-                                      ? "-"
-                                      // ignore: unnecessary_string_interpolations
-                                      : "${DateFormat.jms().format(DateTime.parse(data['keluar']!['date']))}"),
+                                  // ignore: unnecessary_string_interpolations
+                                  "${DateFormat.yMMMEd().format(DateTime.parse(data['date']))}",
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                 ),
                               ],
                             ),
-                          ),
+                            Text(
+                              (data['masuk']?['date'] == null
+                                  ? "-"
+                                  // ignore: unnecessary_string_interpolations
+                                  : "${DateFormat.jms().format(DateTime.parse(data['masuk']!['date']))}"),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            const Text(
+                              "Keluar",
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            Text(
+                              (data['keluar']?['date'] == null
+                                  ? "-"
+                                  // ignore: unnecessary_string_interpolations
+                                  : "${DateFormat.jms().format(DateTime.parse(data['keluar']!['date']))}"),
+                            ),
+                          ],
                         ),
                       ),
-                    );
-                  },
+                    ),
+                  ),
                 );
               },
+            );
+          },
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: const Color.fromRGBO(4, 21, 98, 1),
+        onPressed: () {
+          Get.dialog(
+            Dialog(
+              child: Container(
+                padding: const EdgeInsets.all(20),
+                height: 400,
+                child: SfDateRangePicker(
+                  monthViewSettings:
+                      const DateRangePickerMonthViewSettings(firstDayOfWeek: 1),
+                  selectionMode: DateRangePickerSelectionMode.range,
+                  showActionButtons: true,
+                  onCancel: () => Get.back(),
+                  onSubmit: (obj) {
+                    if (obj != null) {
+                      if ((obj as PickerDateRange).endDate != null) {
+                        controller.pickDate(obj.startDate!, obj.endDate!);
+                      }
+                    }
+                  },
+                ),
+              ),
             ),
-          ),
-        ],
+          );
+        },
+        child: const Icon(Icons.format_list_bulleted_rounded),
       ),
     );
   }
