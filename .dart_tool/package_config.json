@@ -416,6 +416,18 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "syncfusion_flutter_core",
+      "rootUri": "file:///C:/Users/ASUS/AppData/Local/Pub/Cache/hosted/pub.dev/syncfusion_flutter_core-21.2.9",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
+      "name": "syncfusion_flutter_datepicker",
+      "rootUri": "file:///C:/Users/ASUS/AppData/Local/Pub/Cache/hosted/pub.dev/syncfusion_flutter_datepicker-21.2.9",
+      "packageUri": "lib/",
+      "languageVersion": "2.17"
+    },
+    {
       "name": "term_glyph",
       "rootUri": "file:///C:/Users/ASUS/AppData/Local/Pub/Cache/hosted/pub.dev/term_glyph-1.2.1",
       "packageUri": "lib/",
@@ -458,7 +470,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-06-08T15:57:30.485498Z",
+  "generated": "2023-06-10T05:55:31.632863Z",
   "generator": "pub",
   "generatorVersion": "3.0.2"
 }
