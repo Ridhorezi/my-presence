@@ -30,5 +30,6 @@ com.alipproject.mypresence.app-packaged_res-28 D:\flutter-project\tugas\mypresen
 com.alipproject.mypresence.app-packaged_res-29 D:\flutter-project\tugas\mypresence\build\firebase_core\intermediates\packaged_res\debug
 com.alipproject.mypresence.app-packaged_res-30 D:\flutter-project\tugas\mypresence\build\firebase_storage\intermediates\packaged_res\debug
 com.alipproject.mypresence.app-packaged_res-31 D:\flutter-project\tugas\mypresence\build\flutter_plugin_android_lifecycle\intermediates\packaged_res\debug
-com.alipproject.mypresence.app-packaged_res-32 D:\flutter-project\tugas\mypresence\build\geolocator_android\intermediates\packaged_res\debug
-com.alipproject.mypresence.app-packaged_res-33 D:\flutter-project\tugas\mypresence\build\image_picker_android\intermediates\packaged_res\debug
+com.alipproject.mypresence.app-packaged_res-32 D:\flutter-project\tugas\mypresence\build\geocoding_android\intermediates\packaged_res\debug
+com.alipproject.mypresence.app-packaged_res-33 D:\flutter-project\tugas\mypresence\build\geolocator_android\intermediates\packaged_res\debug
+com.alipproject.mypresence.app-packaged_res-34 D:\flutter-project\tugas\mypresence\build\image_picker_android\intermediates\packaged_res\debug
