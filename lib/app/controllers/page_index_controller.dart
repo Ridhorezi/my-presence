@@ -243,7 +243,7 @@ class PageIndexController extends GetxController {
 
           // check distance between 2 position
           double distance = Geolocator.distanceBetween(
-              -6.259892, 107.0005688, position.latitude, position.longitude);
+              -6.2603274, 107.0028569, position.latitude, position.longitude);
 
           await presensi(position, address, distance);
         } else {
